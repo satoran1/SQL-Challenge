@@ -1,12 +1,12 @@
 CREATE TABLE departments(
     dept_no             INT                 NOT NULL,
-    dept_name           VARCHAR(40)         NOT NULL,
+    dept_name           VARCHAR             NOT NULL,
     PRIMARY KEY (dept_no)
 );
 
 CREATE TABLE dept_emp(
-    emp_no             INT(5)               NOT NULL,
-    dept_no            VARCHAR(40)          NOT NULL,
+    emp_no             INT                    NOT NULL,
+    dept_no            VARCHAR                NOT NULL,
     FOREIGN KEY (emp_no) REFERENCES employees (emp_no), 
     PRIMARY KEY (dept_no)
 );
