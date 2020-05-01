@@ -1,48 +1,46 @@
 CREATE TABLE departments(
-    dept_no             VARCHAR(4)          NOT NULL,
+    dept_no             INT                 NOT NULL,
     dept_name           VARCHAR(40)         NOT NULL,
-    UNIQUE (dept_name),
     PRIMARY KEY (dept_no)
 );
 
 CREATE TABLE dept_emp(
-    emp_no             VARCHAR(5)          NOT NULL,
-    dept_no            VARCHAR(40)         NOT NULL,
-    UNIQUE (emp_no),
+    emp_no             INT(5)               NOT NULL,
+    dept_no            VARCHAR(40)          NOT NULL,
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no), 
     PRIMARY KEY (dept_no)
 );
 
 CREATE TABLE dept_manager(
-    dept_no            VARCHAR(4)          NOT NULL,
-    emp_no             VARCHAR(40)         NOT NULL,
-    UNIQUE (emp_no),
+    dept_no            VARCHAR         NOT NULL,
+    emp_no             VARCHAR         NOT NULL,
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no), 
     PRIMARY KEY (dept_no)
 );
 
 CREATE TABLE employees(
-    emp_no               VARCHAR(6)          NOT NULL,
-    emp_title_id         VARCHAR(5)          NOT NULL,
-    birth_date           VARCHAR(8)          NOT NULL,
-    first_name           VARCHAR(40)         NOT NULL,
-    last_name            VARCHAR(40)         NOT NULL,
-    sex                  VARCHAR(1)          NOT NULL,
-    hire_date            VARCHAR(8)          NOT NULL,
+    emp_no               INT                 NOT NULL,
+    emp_title_id         VARCHAR             NOT NULL,
+    birth_date           DATE                NOT NULL,
+    first_name           VARCHAR             NOT NULL,
+    last_name            VARCHAR             NOT NULL,
+    sex                  VARCHAR             NOT NULL,
+    hire_date            DATE                NOT NULL,
 
-    UNIQUE (dept_name),
+   FOREIGN  KEY (emp_title_id) REFERENCES title_id,
     PRIMARY KEY (dept_no)
 );
 
 CREATE TABLE salaries(
-    emp_no               VARCHAR(5)          NOT NULL,
-    salary               VARCHAR(10)         NOT NULL,
-    UNIQUE (salary),
+    emp_no               INT                NOT NULL,
+    salary               INT                NOT NULL,
+    FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
     PRIMARY KEY (emp_no)
 );
 
 CREATE TABLE titles(
-    title_id             VARCHAR(5)          NOT NULL,
-    title                VARCHAR(40)         NOT NULL,
-    UNIQUE (title),
+    title_id             VARCHAR             NOT NULL,
+    title                VARCHAR             NOT NULL,
     PRIMARY KEY (title_id)
 );
 
